@@ -46,6 +46,11 @@ angular.module('metricsgraphics', []).directive('chart', function() {
       options.data = scope.data || [];
       options.target = '#' + element[0].id;
       // create the chart
+      scope.$watch('data',function(value) {
+        options.data = value;
+        MG.data_graphic(options);
+      })
+      
       MG.data_graphic(options);
     },
     restrict: 'E',
