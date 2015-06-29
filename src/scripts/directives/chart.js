@@ -49,10 +49,12 @@ angular.module('metricsgraphics', []).directive('chart', function() {
       scope.$watch('data',function(value) {
         options.data = value;
         MG.data_graphic(options);
-      })
-      window.requestAnimationFrame(function() {
-        MG.data_graphic(options);  
       });
+      setTimeout(function() {
+        window.requestAnimationFrame(function() {
+          MG.data_graphic(options);  
+        });        
+      },0);
     },
     restrict: 'E',
     scope: {
