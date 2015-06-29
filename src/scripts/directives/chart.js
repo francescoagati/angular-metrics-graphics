@@ -50,8 +50,9 @@ angular.module('metricsgraphics', []).directive('chart', function() {
         options.data = value;
         MG.data_graphic(options);
       })
-      
-      MG.data_graphic(options);
+      window.requestAnimationFrame(function() {
+        MG.data_graphic(options);  
+      });
     },
     restrict: 'E',
     scope: {
